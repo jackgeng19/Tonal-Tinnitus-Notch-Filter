@@ -5,34 +5,34 @@ import scipy.signal
 import numpy as np
 import tkinter as tk
 from tkinter import filedialog
-from cx_Freeze import setup, Executable
 
 def apply_filter():
-    # Get the input file
+    # Ask the user the input file's dir
     file_path = filedialog.askopenfilename()
 
-    # Get the center frequency and bandwidth from the input fields
+    # Ask the user to get center frequency and bandwidth
     center_frequency = float(center_frequency_entry.get())
     bandwidth = float(bandwidth_entry.get())
 
     # Read the audio file
     data, sr = sf.read(file_path)
 
-    # Define the notch filter parameters
-    center_frequency = center_frequency # Hz
-    bandwidth = bandwidth # Hz
+    # Define the notch filter parameters in Hz
+    center_frequency = center_frequency 
+    bandwidth = bandwidth
 
-    # Create the notch filter
+    # Create the notch filter we want
+    # Question remain: what is the difference between iirnotch and notch in scipy.signal
     b, a = scipy.signal.iirnotch(center_frequency, bandwidth, sr)
 
-    # Apply the filter to the audio data
+    # Apply the filter to the audio that is transferred
     filtered_data = scipy.signal.lfilter(b, a, data)
 
     # Write the filtered data to a new file
     sf.write('filtered_file.wav', filtered_data, sr)
     label_result.config(text='File filtered successfully')
 
-# Create the main window
+# Use tkinter to create the main window
 root = tk.Tk()
 root.title("Notch Filter")
 
@@ -47,7 +47,7 @@ bandwidth_label.pack()
 bandwidth_entry = tk.Entry(root)
 bandwidth_entry.pack()
 
-# Create a button to apply the filter
+# Create a button to apply the filter by calling the def apply_filter
 apply_filter_button = tk.Button(root, text="Apply Filter", command=apply_filter)
 apply_filter_button.pack()
 
@@ -57,11 +57,3 @@ label_result.pack()
 
 # Run the GUI
 root.mainloop()
-
-# Set up for exe info
-setup(
-    name = "Tonal Tinnitus Therapy Filter",
-    version = "0.1",
-    options = {"build_exe": {"includes":["scipy.signal"]}},
-    executables = [Executable("my_script.py")]
-)
