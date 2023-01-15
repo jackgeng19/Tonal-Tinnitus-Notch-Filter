@@ -1,0 +1,3 @@
+([('my_script',
+   '/Users/jackgengqc/Documents/GitHub/Tonal-Tinnitus-Notch-Filter/dist/my_script',
+   'EXECUTABLE')],)
