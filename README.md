@@ -1,5 +1,3 @@
-# Tonal-Tinnitus-Notch-Filter
-
 # Tonal Tinnitus Notch Filter
 
 This application is a simple GUI tool for filtering out specific frequency ranges from .wav audio files using the `scipy.signal` library. The user can specify the center frequency and bandwidth of the notch filter, and the application will apply the filter to the chosen audio file and save the filtered audio to a new file.
@@ -29,6 +27,3 @@ This application is a simple GUI tool for filtering out specific frequency range
 - The application will raise an error if the center frequency or bandwidth input is invalid.
 - The application is tested on MacOS, and it may not work as expected on other operating systems.
 
-## Author
-
-- Jack Geng
