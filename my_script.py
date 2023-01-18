@@ -28,7 +28,7 @@ def apply_filter():
     # Apply the filter to the audio that is transferred
     filtered_data = scipy.signal.lfilter(b, a, data)
 
-    # Write the filtered data to a new file
+    # Write the filtered wav to a new file
     sf.write('filtered_file.wav', filtered_data, sr)
     label_result.config(text='File filtered successfully')
 
