@@ -29,7 +29,7 @@ def apply_filter():
     i = 1
     m = center_frequency
     filtered_data = scipy.signal.lfilter(b, a, data)
-    while i < center_frequency or m < 0:
+    while i < 62:
         b, a = scipy.signal.iirnotch(m, bandwidth, sr)
         filtered_data = scipy.signal.lfilter(b, a, filtered_data)
         m -= 1
